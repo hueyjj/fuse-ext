@@ -9,6 +9,7 @@ let injectMisterGrumpy = () => {
 
   let infoTextNode = document.querySelector("#info-text");
   infoTextNode.parentNode.insertBefore(grumpyBtn, infoTextNode.nextSibling);
+
 };
 
 let id = setInterval(() => {
