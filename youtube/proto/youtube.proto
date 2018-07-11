@@ -4,7 +4,7 @@ package youtube;
 
 import "google/api/annotations.proto";
 
-service YoutubedlService {
+service YoutubeService {
     rpc FindYoutubeMusic(YtMusicRequest) returns (YtMusicReply) {
         option (google.api.http) = {
             post: "/youtube/music/get"

@@ -20,7 +20,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   name='proto/youtube.proto',
   package='youtube',
   syntax='proto3',
-  serialized_pb=_b('\n\x13proto/youtube.proto\x12\x07youtube\x1a\x1cgoogle/api/annotations.proto\"\x1d\n\x0eYtMusicRequest\x12\x0b\n\x03url\x18\x01 \x01(\t\"z\n\x0cYtMusicReply\x12\x0c\n\x04name\x18\x01 \x01(\t\x12,\n\x06status\x18\x02 \x01(\x0e\x32\x1c.youtube.YtMusicReply.Status\".\n\x06Status\x12\x0f\n\x0bMUSIC_EXIST\x10\x00\x12\x13\n\x0fMUSIC_NOT_EXIST\x10\x01\x32u\n\x10YoutubedlService\x12\x61\n\x10\x46indYoutubeMusic\x12\x17.youtube.YtMusicRequest\x1a\x15.youtube.YtMusicReply\"\x1d\x82\xd3\xe4\x93\x02\x17\"\x12/youtube/music/get:\x01*b\x06proto3')
+  serialized_pb=_b('\n\x13proto/youtube.proto\x12\x07youtube\x1a\x1cgoogle/api/annotations.proto\"\x1d\n\x0eYtMusicRequest\x12\x0b\n\x03url\x18\x01 \x01(\t\"z\n\x0cYtMusicReply\x12\x0c\n\x04name\x18\x01 \x01(\t\x12,\n\x06status\x18\x02 \x01(\x0e\x32\x1c.youtube.YtMusicReply.Status\".\n\x06Status\x12\x0f\n\x0bMUSIC_EXIST\x10\x00\x12\x13\n\x0fMUSIC_NOT_EXIST\x10\x01\x32s\n\x0eYoutubeService\x12\x61\n\x10\x46indYoutubeMusic\x12\x17.youtube.YtMusicRequest\x1a\x15.youtube.YtMusicReply\"\x1d\x82\xd3\xe4\x93\x02\x17\"\x12/youtube/music/get:\x01*b\x06proto3')
   ,
   dependencies=[google_dot_api_dot_annotations__pb2.DESCRIPTOR,])
 
@@ -140,18 +140,18 @@ _sym_db.RegisterMessage(YtMusicReply)
 
 
 
-_YOUTUBEDLSERVICE = _descriptor.ServiceDescriptor(
-  name='YoutubedlService',
-  full_name='youtube.YoutubedlService',
+_YOUTUBESERVICE = _descriptor.ServiceDescriptor(
+  name='YoutubeService',
+  full_name='youtube.YoutubeService',
   file=DESCRIPTOR,
   index=0,
   options=None,
   serialized_start=217,
-  serialized_end=334,
+  serialized_end=332,
   methods=[
   _descriptor.MethodDescriptor(
     name='FindYoutubeMusic',
-    full_name='youtube.YoutubedlService.FindYoutubeMusic',
+    full_name='youtube.YoutubeService.FindYoutubeMusic',
     index=0,
     containing_service=None,
     input_type=_YTMUSICREQUEST,
@@ -159,8 +159,8 @@ _YOUTUBEDLSERVICE = _descriptor.ServiceDescriptor(
     options=_descriptor._ParseOptions(descriptor_pb2.MethodOptions(), _b('\202\323\344\223\002\027\"\022/youtube/music/get:\001*')),
   ),
 ])
-_sym_db.RegisterServiceDescriptor(_YOUTUBEDLSERVICE)
+_sym_db.RegisterServiceDescriptor(_YOUTUBESERVICE)
 
-DESCRIPTOR.services_by_name['YoutubedlService'] = _YOUTUBEDLSERVICE
+DESCRIPTOR.services_by_name['YoutubeService'] = _YOUTUBESERVICE
 
 # @@protoc_insertion_point(module_scope)

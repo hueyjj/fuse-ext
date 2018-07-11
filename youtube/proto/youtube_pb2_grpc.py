@@ -4,7 +4,7 @@ import grpc
 from proto import youtube_pb2 as proto_dot_youtube__pb2
 
 
-class YoutubedlServiceStub(object):
+class YoutubeServiceStub(object):
   # missing associated documentation comment in .proto file
   pass
 
@@ -15,13 +15,13 @@ class YoutubedlServiceStub(object):
       channel: A grpc.Channel.
     """
     self.FindYoutubeMusic = channel.unary_unary(
-        '/youtube.YoutubedlService/FindYoutubeMusic',
+        '/youtube.YoutubeService/FindYoutubeMusic',
         request_serializer=proto_dot_youtube__pb2.YtMusicRequest.SerializeToString,
         response_deserializer=proto_dot_youtube__pb2.YtMusicReply.FromString,
         )
 
 
-class YoutubedlServiceServicer(object):
+class YoutubeServiceServicer(object):
   # missing associated documentation comment in .proto file
   pass
 
@@ -33,7 +33,7 @@ class YoutubedlServiceServicer(object):
     raise NotImplementedError('Method not implemented!')
 
 
-def add_YoutubedlServiceServicer_to_server(servicer, server):
+def add_YoutubeServiceServicer_to_server(servicer, server):
   rpc_method_handlers = {
       'FindYoutubeMusic': grpc.unary_unary_rpc_method_handler(
           servicer.FindYoutubeMusic,
@@ -42,5 +42,5 @@ def add_YoutubedlServiceServicer_to_server(servicer, server):
       ),
   }
   generic_handler = grpc.method_handlers_generic_handler(
-      'youtube.YoutubedlService', rpc_method_handlers)
+      'youtube.YoutubeService', rpc_method_handlers)
   server.add_generic_rpc_handlers((generic_handler,))
