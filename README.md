@@ -1,3 +1,3 @@
-# fuse-ext
+# fuse-server
 
-This repository holds extensions for [fuse](https://github.com/hueyjj/fuse)
+This repository holds servers for [fuse](https://github.com/hueyjj/fuse)
