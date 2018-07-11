@@ -1,0 +1,30 @@
+syntax = "proto3";
+
+package youtube;
+
+import "google/api/annotations.proto";
+
+service YoutubedlService {
+    rpc FindYoutubeMusic(YtMusicRequest) returns (YtMusicReply) {
+        option (google.api.http) = {
+            post: "/youtube/music/get"
+            body: "*"
+        }; 
+    }
+}
+
+message YtMusicRequest {
+    // Url is the url of the youtube music video
+    string url = 1;
+}
+
+message YtMusicReply {
+    // Name is the name of the music file
+    string name = 1;
+    // Status tells whether or not the music file exists
+    enum Status {
+        MUSIC_EXIST = 0;
+        MUSIC_NOT_EXIST = 1;
+    }
+    Status status = 2;
+}
