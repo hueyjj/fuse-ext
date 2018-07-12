@@ -19,6 +19,11 @@ class YoutubeServiceStub(object):
         request_serializer=proto_dot_youtube__pb2.YtMusicRequest.SerializeToString,
         response_deserializer=proto_dot_youtube__pb2.YtMusicReply.FromString,
         )
+    self.DownloadYoutubeMusic = channel.unary_unary(
+        '/youtube.YoutubeService/DownloadYoutubeMusic',
+        request_serializer=proto_dot_youtube__pb2.YtMusicRequest.SerializeToString,
+        response_deserializer=proto_dot_youtube__pb2.YtMusicReply.FromString,
+        )
 
 
 class YoutubeServiceServicer(object):
@@ -32,11 +37,23 @@ class YoutubeServiceServicer(object):
     context.set_details('Method not implemented!')
     raise NotImplementedError('Method not implemented!')
 
+  def DownloadYoutubeMusic(self, request, context):
+    # missing associated documentation comment in .proto file
+    pass
+    context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+    context.set_details('Method not implemented!')
+    raise NotImplementedError('Method not implemented!')
+
 
 def add_YoutubeServiceServicer_to_server(servicer, server):
   rpc_method_handlers = {
       'FindYoutubeMusic': grpc.unary_unary_rpc_method_handler(
           servicer.FindYoutubeMusic,
+          request_deserializer=proto_dot_youtube__pb2.YtMusicRequest.FromString,
+          response_serializer=proto_dot_youtube__pb2.YtMusicReply.SerializeToString,
+      ),
+      'DownloadYoutubeMusic': grpc.unary_unary_rpc_method_handler(
+          servicer.DownloadYoutubeMusic,
           request_deserializer=proto_dot_youtube__pb2.YtMusicRequest.FromString,
           response_serializer=proto_dot_youtube__pb2.YtMusicReply.SerializeToString,
       ),

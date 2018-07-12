@@ -7,9 +7,16 @@ import "google/api/annotations.proto";
 service YoutubeService {
     rpc FindYoutubeMusic(YtMusicRequest) returns (YtMusicReply) {
         option (google.api.http) = {
-            post: "/youtube/music/get"
+            post: "/youtube/music/search"
             body: "*"
         }; 
+    }
+
+    rpc DownloadYoutubeMusic(YtMusicRequest) returns (YtMusicReply) {
+        option (google.api.http) = {
+            post: "/youtube/music/download"
+            body: "*"
+        };
     }
 }
 
@@ -20,11 +27,14 @@ message YtMusicRequest {
 
 message YtMusicReply {
     // Name is the name of the music file
-    string name = 1;
+    string url = 1;
+    string name = 2;
     // Status tells whether or not the music file exists
     enum Status {
-        MUSIC_EXIST = 0;
-        MUSIC_NOT_EXIST = 1;
+        EXIST = 0;
+        NOT_EXIST = 1;
+        DOWNLOAD_FAIL = 2;
+        DOWNLOAD_SUCCESS = 3;
     }
-    Status status = 2;
+    Status status = 3;
 }
