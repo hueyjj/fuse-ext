@@ -11,14 +11,16 @@ from youtube import download_music
 class Youtube(youtube_pb2_grpc.YoutubeServiceServicer):
     
     def FindYoutubeMusic(self, request, context):
-        print(request.url + " received")
+        print("Received youtube music find request: " + request.url)
         return youtube_pb2.YtMusicReply(name=request.url, status=youtube_pb2.YtMusicReply.MUSIC_EXIST)
     
     def DownloadYoutubeMusic(self, request, context):
-        print(request.url + " received")
+        print("Received youtube music download request: " + request.url)
         ret_code = download_music(request.url)
-        print("ret_code=" + str(ret_code))
-        return youtube_pb2.YtMusicReply(name=request.url, status=youtube_pb2.YtMusicReply.DOWNLOAD_FAIL)
+        status = youtube_pb2.YtMusicReply.DOWNLOAD_SUCCESS
+        if ret_code is not 0:
+            status = youtube_pb2.YtMusicReply.DOWNLOAD_FAIL
+        return youtube_pb2.YtMusicReply(name=request.url, status=status)
 
 def serve():
     server = grpc.server(futures.ThreadPoolExecutor(max_workers=10))

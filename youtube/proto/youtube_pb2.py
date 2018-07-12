@@ -20,7 +20,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   name='proto/youtube.proto',
   package='youtube',
   syntax='proto3',
-  serialized_pb=_b('\n\x13proto/youtube.proto\x12\x07youtube\x1a\x1cgoogle/api/annotations.proto\"\x1d\n\x0eYtMusicRequest\x12\x0b\n\x03url\x18\x01 \x01(\t\"\xa4\x01\n\x0cYtMusicReply\x12\x0b\n\x03url\x18\x01 \x01(\t\x12\x0c\n\x04name\x18\x02 \x01(\t\x12,\n\x06status\x18\x03 \x01(\x0e\x32\x1c.youtube.YtMusicReply.Status\"K\n\x06Status\x12\t\n\x05\x45XIST\x10\x00\x12\r\n\tNOT_EXIST\x10\x01\x12\x11\n\rDOWNLOAD_FAIL\x10\x02\x12\x14\n\x10\x44OWNLOAD_SUCCESS\x10\x03\x32\xe2\x01\n\x0eYoutubeService\x12\x64\n\x10\x46indYoutubeMusic\x12\x17.youtube.YtMusicRequest\x1a\x15.youtube.YtMusicReply\" \x82\xd3\xe4\x93\x02\x1a\"\x15/youtube/music/search:\x01*\x12j\n\x14\x44ownloadYoutubeMusic\x12\x17.youtube.YtMusicRequest\x1a\x15.youtube.YtMusicReply\"\"\x82\xd3\xe4\x93\x02\x1c\"\x17/youtube/music/download:\x01*b\x06proto3')
+  serialized_pb=_b('\n\x13proto/youtube.proto\x12\x07youtube\x1a\x1cgoogle/api/annotations.proto\"\x1d\n\x0eYtMusicRequest\x12\x0b\n\x03url\x18\x01 \x01(\t\"\xbd\x01\n\x0cYtMusicReply\x12\x0b\n\x03url\x18\x01 \x01(\t\x12\x0c\n\x04name\x18\x02 \x01(\t\x12,\n\x06status\x18\x03 \x01(\x0e\x32\x1c.youtube.YtMusicReply.Status\"d\n\x06Status\x12\x0b\n\x07UNKNOWN\x10\x00\x12\x0f\n\x0bMUSIC_EXIST\x10\x01\x12\x13\n\x0fMUSIC_NOT_EXIST\x10\x02\x12\x11\n\rDOWNLOAD_FAIL\x10\x03\x12\x14\n\x10\x44OWNLOAD_SUCCESS\x10\x04\x32\xe2\x01\n\x0eYoutubeService\x12\x64\n\x10\x46indYoutubeMusic\x12\x17.youtube.YtMusicRequest\x1a\x15.youtube.YtMusicReply\" \x82\xd3\xe4\x93\x02\x1a\"\x15/youtube/music/search:\x01*\x12j\n\x14\x44ownloadYoutubeMusic\x12\x17.youtube.YtMusicRequest\x1a\x15.youtube.YtMusicReply\"\"\x82\xd3\xe4\x93\x02\x1c\"\x17/youtube/music/download:\x01*b\x06proto3')
   ,
   dependencies=[google_dot_api_dot_annotations__pb2.DESCRIPTOR,])
 
@@ -33,26 +33,30 @@ _YTMUSICREPLY_STATUS = _descriptor.EnumDescriptor(
   file=DESCRIPTOR,
   values=[
     _descriptor.EnumValueDescriptor(
-      name='EXIST', index=0, number=0,
+      name='UNKNOWN', index=0, number=0,
       options=None,
       type=None),
     _descriptor.EnumValueDescriptor(
-      name='NOT_EXIST', index=1, number=1,
+      name='MUSIC_EXIST', index=1, number=1,
       options=None,
       type=None),
     _descriptor.EnumValueDescriptor(
-      name='DOWNLOAD_FAIL', index=2, number=2,
+      name='MUSIC_NOT_EXIST', index=2, number=2,
       options=None,
       type=None),
     _descriptor.EnumValueDescriptor(
-      name='DOWNLOAD_SUCCESS', index=3, number=3,
+      name='DOWNLOAD_FAIL', index=3, number=3,
+      options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name='DOWNLOAD_SUCCESS', index=4, number=4,
       options=None,
       type=None),
   ],
   containing_type=None,
   options=None,
   serialized_start=183,
-  serialized_end=258,
+  serialized_end=283,
 )
 _sym_db.RegisterEnumDescriptor(_YTMUSICREPLY_STATUS)
 
@@ -130,7 +134,7 @@ _YTMUSICREPLY = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=94,
-  serialized_end=258,
+  serialized_end=283,
 )
 
 _YTMUSICREPLY.fields_by_name['status'].enum_type = _YTMUSICREPLY_STATUS
@@ -161,8 +165,8 @@ _YOUTUBESERVICE = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=0,
   options=None,
-  serialized_start=261,
-  serialized_end=487,
+  serialized_start=286,
+  serialized_end=512,
   methods=[
   _descriptor.MethodDescriptor(
     name='FindYoutubeMusic',

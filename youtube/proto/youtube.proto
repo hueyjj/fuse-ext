@@ -31,10 +31,11 @@ message YtMusicReply {
     string name = 2;
     // Status tells whether or not the music file exists
     enum Status {
-        EXIST = 0;
-        NOT_EXIST = 1;
-        DOWNLOAD_FAIL = 2;
-        DOWNLOAD_SUCCESS = 3;
+        UNKNOWN = 0;
+        MUSIC_EXIST = 1;
+        MUSIC_NOT_EXIST = 2;
+        DOWNLOAD_FAIL = 3;
+        DOWNLOAD_SUCCESS = 4;
     }
     Status status = 3;
 }
