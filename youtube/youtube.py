@@ -8,7 +8,7 @@ from os.path import isfile, join
 MEDIA_SUFFIX = "m4a"
 
 def get_dl_dir():
-    return path.join(str(Path.home()), "Downloads")
+    return path.join(str(Path.home()), "Downloads", "fuse-youtube-downloads")
 
 dl_dir = get_dl_dir()
 
