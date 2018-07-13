@@ -46,19 +46,16 @@ def _extract_meta_info(url):
     with youtube_dl.YoutubeDL() as ytdl:
         try:
             meta = ytdl.extract_info(url, download=False)
+            return {
+                "title": meta["title"],
+            }
         except youtube_dl.DownloadError as err:
             print("_extract_meta_info: Download error")
             print(err)
         except Exception as err:
             print("_extract_meta_info: exception caught")
             print(err)
-
-        if meta:
-            return {
-                "title": meta["title"],
-            }
-
-        return None
+    return None
 
 def does_music_video_exist(url):
     file_list = _list_dir(dl_dir)
