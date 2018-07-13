@@ -34,7 +34,7 @@ def serve():
     youtube_pb2_grpc.add_YoutubeServiceServicer_to_server(Youtube(), server)
     server.add_insecure_port('[::]:9090')
     server.start()
-    print("Server starting...")
+    print("Starting listening at :9090")
     try:
         while True:
             time.sleep(60*60*24)
