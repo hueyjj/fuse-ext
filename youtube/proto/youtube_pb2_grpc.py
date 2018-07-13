@@ -14,8 +14,8 @@ class YoutubeServiceStub(object):
     Args:
       channel: A grpc.Channel.
     """
-    self.FindYoutubeMusic = channel.unary_unary(
-        '/youtube.YoutubeService/FindYoutubeMusic',
+    self.SearchYoutubeMusic = channel.unary_unary(
+        '/youtube.YoutubeService/SearchYoutubeMusic',
         request_serializer=proto_dot_youtube__pb2.YtMusicRequest.SerializeToString,
         response_deserializer=proto_dot_youtube__pb2.YtMusicReply.FromString,
         )
@@ -30,7 +30,7 @@ class YoutubeServiceServicer(object):
   # missing associated documentation comment in .proto file
   pass
 
-  def FindYoutubeMusic(self, request, context):
+  def SearchYoutubeMusic(self, request, context):
     # missing associated documentation comment in .proto file
     pass
     context.set_code(grpc.StatusCode.UNIMPLEMENTED)
@@ -47,8 +47,8 @@ class YoutubeServiceServicer(object):
 
 def add_YoutubeServiceServicer_to_server(servicer, server):
   rpc_method_handlers = {
-      'FindYoutubeMusic': grpc.unary_unary_rpc_method_handler(
-          servicer.FindYoutubeMusic,
+      'SearchYoutubeMusic': grpc.unary_unary_rpc_method_handler(
+          servicer.SearchYoutubeMusic,
           request_deserializer=proto_dot_youtube__pb2.YtMusicRequest.FromString,
           response_serializer=proto_dot_youtube__pb2.YtMusicReply.SerializeToString,
       ),

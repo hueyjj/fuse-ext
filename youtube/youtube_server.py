@@ -6,13 +6,20 @@ import grpc
 import proto.youtube_pb2 as youtube_pb2
 import proto.youtube_pb2_grpc as youtube_pb2_grpc
 
-from youtube import download_music
+from youtube import (
+    download_music,
+    does_music_video_exist,
+)
 
 class Youtube(youtube_pb2_grpc.YoutubeServiceServicer):
     
-    def FindYoutubeMusic(self, request, context):
+    def SearchYoutubeMusic(self, request, context):
         print("Received youtube music find request: " + request.url)
-        return youtube_pb2.YtMusicReply(name=request.url, status=youtube_pb2.YtMusicReply.MUSIC_EXIST)
+        music_exists = does_music_video_exist(request.url)
+        status = youtube_pb2.YtMusicReply.MUSIC_NOT_EXIST
+        if music_exists:
+            status = youtube_pb2.YtMusicReply.MUSIC_EXIST
+        return youtube_pb2.YtMusicReply(name=request.url, status=status)
     
     def DownloadYoutubeMusic(self, request, context):
         print("Received youtube music download request: " + request.url)
