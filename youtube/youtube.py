@@ -38,6 +38,8 @@ def _print_unicode(source):
 # Checks if a file + .m4a exists in a list
 def _file_exists_in_list(file_list, file_name):
     file_name += "." + MEDIA_SUFFIX
+    # Double quote are replaced by single quotes when downloading
+    file_name = youtube_dl.utils.sanitize_filename(file_name)
     if file_name in file_list:
         return True
     return False
