@@ -4,6 +4,14 @@ import youtube_dl
 from pathlib import Path
 from os import path, listdir
 from os.path import isfile, join
+import logging
+
+LOG_FILE = "youtube.log"
+logging.basicConfig(filename=LOG_FILE, filemode="w", level=logging.DEBUG)
+console =  logging.StreamHandler()
+console.setLevel(logging.DEBUG)
+logging.getLogger("").addHandler(console)
+logger = logging.getLogger(__name__)
 
 MEDIA_SUFFIX = "m4a"
 
@@ -28,7 +36,7 @@ music_dl_opts = {
     "writethumbnail": "True",
     "outtmpl": path.join(dl_dir, "%(title)s.%(ext)s"),
     "postprocessors": [
-        { "key": "FFmpegExtractAudio", "preferredcodec": "m4a", "preferredquality": "0"},
+        { "key": "FFmpegExtractAudio", "preferredcodec": "mp3", "preferredquality": "0"},
         { "key": "EmbedThumbnail" },
     ]
 }
@@ -48,11 +56,21 @@ def _print_unicode(source):
 
 # Checks if a file + .m4a exists in a list
 def _file_exists_in_list(file_list, file_name):
-    file_name += "." + MEDIA_SUFFIX
     # Double quote are replaced by single quotes when downloading
     file_name = youtube_dl.utils.sanitize_filename(file_name)
-    if file_name in file_list:
-        return True
+        
+    for f in file_list:
+        filename, _ = path.splitext(f)
+        if file_name == filename:
+            return True
+    with open("log.txt", "ab") as e:
+        for f in file_list:
+            e.write(f.encode("utf-8"))
+            e.write("\n".encode())
+        e.write(file_name.encode("utf-8"))
+        e.write("\n".encode())
+    out = "file_name=" + str(file_name.encode("utf-8")) + " does not exist"
+    logger.debug(out)
     return False
     
 def _extract_meta_info(url):
