@@ -12,14 +12,25 @@ def get_dl_dir():
 
 dl_dir = get_dl_dir()
 
+'''
+Read this. What these options actually do is try and download the m4a format of a 
+youtube video, but if it doesn't find m4a then it converts it to m4a. Sometimes there are
+some m4a which will still have video coded into them. The current solution is to just
+run post process to extract the audio and keep the same format (m4a). 
+What what we know so far, choosing a "format": !"m4a" results in downloading the entire 
+video and then extracting the audio, which is not viable on a shitty connection.
+
+And order of postprocessors matter.
+'''
 music_dl_opts = {
     "format": "m4a",
     "ignoreerrors": "True",
     "writethumbnail": "True",
     "outtmpl": path.join(dl_dir, "%(title)s.%(ext)s"),
-    "postprocessors": [{
-        "key": "EmbedThumbnail"
-    }]
+    "postprocessors": [
+        { "key": "FFmpegExtractAudio", "preferredcodec": "m4a", "preferredquality": "0"},
+        { "key": "EmbedThumbnail" },
+    ]
 }
 
 # Retrieves file names from a path
